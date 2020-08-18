@@ -9,7 +9,9 @@
 | password_confirm | string | null: false |
 | family_name      | string | null: false |
 | first_name       | string | null: false |
-| date_select      | string | null: false |
+| family_name_kana | string | null: false |
+| first_name_kana  | string | null: false |
+| date_select      | date   | null: false |
 | email            | string | null: false |
 
 ### Association
@@ -22,7 +24,7 @@
 | Column  | Type   | Option      |
 | ------- | ------ | ----------- |
 | image   | url    | null: false |
-| text    | string | null: false |
+| text    | text   | null: false |
 | user_id | string | null: false |
 | item_id | string | null: false |
 
@@ -46,10 +48,26 @@
 
 | Column  | Type       | Option                         |
 | ------- | ---------- | ------------------------------ |
-| user_id | references | null: false, foreign_key: true |
-| item_id | references | null: false, foreign_key: true |
+| user | references | null: false, foreign_key: true |
+| item | references | null: false, foreign_key: true |
 
 ### Association
 
 - has_one :user
 - belongs_to :item
+
+## addressテーブル
+
+| Column        | Type    | Option      |
+| ------------- | ------- | ----------- |
+| postcode      | string  | null: false |
+| prefecture_id | integer | null: false |
+| city          | string  | null: false |
+| block         | string  | null: false |
+| building      | string  | null: false |
+| phone_number  | string  | null: false |
+
+### Association
+
+- belongs_to :user
+- has_many :transaction
