@@ -18,7 +18,7 @@
 
 - has_many :items
 - has_many :comments
-- has_many :transaction
+- has_many :item_purchases
 
 ## items テーブル
 
@@ -39,7 +39,7 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :transaction
+- has_one :item_purchases
 - has_many :comments
 
 
@@ -54,7 +54,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## transaction テーブル
+## item_purchases テーブル
 
 | Column  | Type       | Option                         |
 | ------- | ---------- | ------------------------------ |
@@ -74,9 +74,9 @@
 | prefecture_id | integer | null: false |
 | city          | string  | null: false |
 | block         | string  | null: false |
-| building      | string  | null: false |
+| building      | string  |             |
 | phone_number  | string  | null: false |
 
 ### Association
 
-- belongs_to :transaction
+- belongs_to :item_purchases
