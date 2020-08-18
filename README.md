@@ -23,7 +23,9 @@
 
 | Column  | Type   | Option      |
 | ------- | ------ | ----------- |
+| title   | string | null: false |
 | image   | url    | null: false |
+| price   | string | null: false |
 | text    | text   | null: false |
 | user_id | string | null: false |
 | item_id | string | null: false |
