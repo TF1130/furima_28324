@@ -18,22 +18,30 @@
 
 - has_many :items
 - has_many :comments
+- has_many :transaction
 
 ## items テーブル
 
-| Column  | Type   | Option      |
-| ------- | ------ | ----------- |
-| title   | string | null: false |
-| image   | url    | null: false |
-| price   | string | null: false |
-| text    | text   | null: false |
-| user_id | string | null: false |
-| item_id | string | null: false |
+| Column            | Type   | Option      |
+| ----------------- | ------ | ----------- |
+| title             | string | null: false |
+| image             | url    | null: false |
+| price             | string | null: false |
+| text              | text   | null: false |
+| user_id           | string | null: false |
+| item_id           | string | null: false |
+| category          | string | null: false |
+| item_status       | string | null: false |
+| delivery_fee      | string | null: false |
+| ShipCity          | string | null: false |
+| ShipDate_Standard | string | null: false |
 
 ### Association
 
 - belongs_to :user
+- belongs_to :transaction
 - has_many :comments
+
 
 ## comments テーブル
 
@@ -55,7 +63,7 @@
 
 ### Association
 
-- has_one :user
+- belongs_to :user
 - belongs_to :item
 
 ## addressテーブル
@@ -71,5 +79,4 @@
 
 ### Association
 
-- belongs_to :user
-- has_many :transaction
+- belongs_to :transaction
