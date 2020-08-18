@@ -22,19 +22,13 @@
 
 ## items テーブル
 
-| Column            | Type   | Option      |
-| ----------------- | ------ | ----------- |
-| title             | string | null: false |
-| image             | url    | null: false |
-| price             | string | null: false |
-| text              | text   | null: false |
-| user_id           | string | null: false |
-| item_id           | string | null: false |
-| category          | string | null: false |
-| item_status       | string | null: false |
-| delivery_fee      | string | null: false |
-| ShipCity          | string | null: false |
-| ShipDate_Standard | string | null: false |
+| Column            | Type   | Option                         |
+| ----------------- | ------ | ------------------------------ |
+| title             | string | null: false                    |
+| image             | url    | null: false                    |
+| price             | string | null: false                    |
+| text              | text   | null: false                    |
+| user_id           | string | null: false, foreign_key: true |
 
 ### Association
 
@@ -56,15 +50,16 @@
 
 ## item_purchases テーブル
 
-| Column  | Type       | Option                         |
-| ------- | ---------- | ------------------------------ |
-| user | references | null: false, foreign_key: true |
-| item | references | null: false, foreign_key: true |
+| Column | Type       | Option                         |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| item   | references | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
 - belongs_to :item
+- has_one :address
 
 ## addressテーブル
 
