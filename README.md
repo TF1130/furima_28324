@@ -65,16 +65,15 @@
 
 ## addressテーブル
 
-| Column        | Type       | Option                         |
-| ------------- | ---------- | ------------------------------ |
-| postcode      | string     | null: false                    |
-| prefecture_id | integer    | null: false                    |
-| city          | string     | null: false                    |
-| block         | string     | null: false                    |
-| building      | string     |                                |
-| phone_number  | string     | null: false                    |
-| user          | references | null: false, foreign_key: true |
-| item          | references | null: false, foreign_key: true |
+| Column        | Type       | Option                        |
+| ------------- | ---------- | ----------------------------- |
+| postcode      | string     | null: false                   |
+| prefecture_id | integer    | null: false                   |
+| city          | string     | null: false                   |
+| block         | string     | null: false                   |
+| building      | string     |                               |
+| phone_number  | string     | null: false                   |
+| item_purchase | references | null: false, foreign_key:true |
 
 ### Association
 
