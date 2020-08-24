@@ -2,6 +2,7 @@ require 'rails_helper'
 describe User do
   before do
     @user = FactoryBot.build(:user)
+    @user.password = 'sss111'
   end
 
   describe 'ユーザー新規登録' do
@@ -14,15 +15,15 @@ describe User do
         expect(@user).to be_valid
       end
       it 'passwordが6文字以上であれば登録できる' do
-        @user.password = 'sss111'
+        @user.password
         expect(@user).to be_valid
       end
       it 'passwordに半角英数字混合で含まれていれば登録できる' do
-        @user.password = 'sss111'
+        @user.password
         expect(@user).to be_valid
       end
       it 'passwordが確認用を含めて2回入力していれば登録できる' do
-        @user.password = 'sss111'
+        @user.password
         @user.password_confirm = 'sss111'
         expect(@user).to be_valid
       end
@@ -41,6 +42,11 @@ describe User do
         @user.email = nil
         @user.valid?
         expect(@user.errors.full_messages).to include("Email can't be blank")
+      end
+      it 'emailは@がなければ登録できない' do
+        @user.email = ""
+        @user.valid?
+        expect(@user.errors.full_messages).to include("メールアドレスに「@」を挿入してください。「」内に「@」がありません。")
       end
       it 'passwordは英数字が含まれたものでなければ登録できない' do
         @user.password = '000000'
