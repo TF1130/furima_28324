@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user =User.new
+    @user = User.new
   end
 
   def edit
@@ -21,8 +21,6 @@ class UsersController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in?
-      refirect_to action: :index
-    end
+    refirect_to action: :index unless user_signed_in?
   end
 end
