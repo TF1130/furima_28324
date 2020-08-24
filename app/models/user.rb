@@ -14,4 +14,8 @@ class User < ApplicationRecord
   validates :date_select, presence: true
   validates :email, presence: true, uniqueness: { case_sensitive: false },
             format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
+  
+  has_many :items
+  has_many :comments
+  has_many :item_purchases
 end
