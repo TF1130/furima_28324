@@ -10,4 +10,9 @@ class ItemsController < ApplicationController
   def move_to_index
     redirect_to 'users/sign_up' unless user_signed_in?
   end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:content, :image).merge(user_id: current_user.id)
 end
