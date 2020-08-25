@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Items.new
   end
 
   def move_to_index

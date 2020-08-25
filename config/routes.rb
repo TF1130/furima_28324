@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   get 'addresses/index'
   get 'addresses/new'
   get 'users/index'
+  get 'items/new'
   resources :addresses
 end
