@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   get 'addresses/new'
   get 'users/index'
   get 'items/new'
+  post 'items/new'
   resources :addresses
 end
