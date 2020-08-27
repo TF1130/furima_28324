@@ -20,4 +20,4 @@ class Prefecture < ActiveHash::Base
 end
 
 # in some view
-%= collection_select :address, :prefecture_id, Prefecture.all, :id, :name %>
+# <%= collection_select :address, :prefecture_id, Prefecture.all, :id, :name %>
