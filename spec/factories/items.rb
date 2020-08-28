@@ -10,8 +10,6 @@ FactoryBot.define do
     prefecture { Faker::Address.state }
     shipdate_standard { Faker::Lorem.sentence }
     price { Faker::Lorem.sentence }
-    association :user 
+    association :user
   end
 end
-
-

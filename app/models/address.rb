@@ -14,8 +14,6 @@ class Address < ApplicationRecord
     validates :shipdate_standard
   end
 
-
-
   with_options numericality: { other_than: 0 } do
     validates :address_id
     validates :category_

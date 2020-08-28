@@ -9,7 +9,7 @@ class Item < ApplicationRecord
     validates :ShipDate_Standard
     validates :price, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/ }
   end
-  
+
   belongs_to :user
   has_one :item_purchase
   has_many :comments
