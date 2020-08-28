@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get 'items/new'
   post 'items/new'
   resources :addresses
+  resources :items, only: [:index, :new, :create]
 end

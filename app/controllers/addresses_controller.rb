@@ -23,7 +23,8 @@ class AddressesController < ApplicationController
       :title,
       :text,
       :address_id,
-      :category_id
+      :category_id,
+      :price
     )
   end
 end

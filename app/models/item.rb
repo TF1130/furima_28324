@@ -2,12 +2,12 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :title, length: { maximum: 40 }
     validates :text, length: { maximum: 1000 }
-    validates :category
-    validates :item_status
-    validates :delivery_fee
-    validates :Prefecture
-    validates :ShipDate_Standard
-    validates :price, format: { with: /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/ }
+    validates :category_id
+    validates :item_status_id
+    validates :delivery_fee_id
+    validates :prefecture_id
+    validates :shipdate_standard_id
+    validates :price, format: { with: /\A[a-z0-9]+\z/ }
   end
 
   belongs_to :user
