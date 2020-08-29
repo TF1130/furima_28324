@@ -7,10 +7,12 @@ class Item < ApplicationRecord
     validates :delivery_fee_id
     validates :prefecture_id
     validates :shipdate_standard_id
-    validates :price, format: { with: /\A[a-z0-9]+\z/ }
+    validates :price, format: { with: /\A[0-9]+\z/ } 
+            # ,numericality: true, greater_than: 300 
+    validates :image
   end
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_one :item_purchase
   has_many :comments
   has_one_attached :image
