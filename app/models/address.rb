@@ -15,5 +15,5 @@ class Address < ApplicationRecord
     validates :price
   end
 
-  belongs_to :item_purchase, optional: true
+  belongs_to :item_purchase
 end
