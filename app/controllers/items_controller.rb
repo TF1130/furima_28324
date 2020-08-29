@@ -5,10 +5,27 @@ class ItemsController < ApplicationController
   end
 
   def new
-    @item = Items.new
+    @item = Item.new
+  end
+
+  def create
+    @item = Item.new(item_params)
+    if @item.save
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def move_to_index
     redirect_to 'users/sign_up' unless user_signed_in?
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:content, :image, :text, :title, 
+    :address_id, :user_id, :category_id, :item_status_id, :delivery_fee_id, 
+    :prefecture_id, :shipdate_standard_id, :price).merge(user_id: current_user.id)
   end
 end

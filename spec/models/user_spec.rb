@@ -44,9 +44,9 @@ describe User do
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
       it 'emailは@がなければ登録できない' do
-        @user.email = "samplegmail.com"
+        @user.email = 'samplegmail.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("メールアドレスに「@」を挿入してください。「」内に「@」がありません。")
+        expect(@user.errors.full_messages).to include('メールアドレスに「@」を挿入してください。「」内に「@」がありません。')
       end
       it 'passwordは英数字が含まれたものでなければ登録できない' do
         @user.password = '000000'

@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get 'addresses/index'
   get 'addresses/new'
   get 'users/index'
+  resources :addresses
+  resources :items, only: [:index, :new, :create]
 end
