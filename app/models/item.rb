@@ -12,7 +12,7 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  belongs_to :user, optional: true
+  belongs_to :user
   has_one :item_purchase
   has_many :comments
   has_one_attached :image
