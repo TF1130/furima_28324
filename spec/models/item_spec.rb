@@ -7,9 +7,9 @@ describe Item do
   describe '新規投稿商品' do
     context '新規投稿がうまくいくとき' do
       it '画像、商品名、商品の説明、カテゴリー、配送料、発送元、発送までの日数、価格が存在すれば投稿できる' do
-        @item = Items.new(image: 'url', title: 'aaa', text: 'aaaaa',
-                          category: 'カテゴリ', item_status: '美品', delivery_fee: '元払い', prefecture: 'ハワイ',
-                          dateship_standard: '30日', price: '1000')
+        @item = Item.new(image: 'url', title: 'aaa', text: 'aaaaa',
+                          category_id: 'カテゴリ', item_status_id: '美品', delivery_fee_id: '元払い', prefecture_id: 'ハワイ',
+                          shipdate_standard_id: '30日', price: '1000')
         expect(@item).to be_valid
       end
       it '価格の範囲が¥300~¥9,999,999の間であれば投稿できる' do
@@ -36,23 +36,23 @@ describe Item do
         expect(@item.errors.full_messages).to include("Info can't be blank")
       end
       it 'カテゴリーが---だと投稿できない' do
-        @item.category = nil
+        @item.category_id = nil
         expect(@item.errors.full_messages).to include('Category Select')
       end
       it '商品の状態が---だと投稿できない' do
-        @item.item_status = nil
+        @item.item_status_id = nil
         expect(@item.errors.full_messages).to include('Sales status Select')
       end
       it '配送料の負担が---だと投稿できない' do
-        @item.delivery_fee = nil
+        @item.delivery_fee_id = nil
         expect(@item.errors.full_messages).to include('Shipping fee status Select')
       end
       it '発送元の地域が---だと投稿できない' do
-        @item.prefecture = nil
+        @item.prefecture_id = nil
         expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it '発送までの日数が---だと投稿できない' do
-        @item.image = nil
+        @item.delivery_fee_id = nil
         expect(@item.errors.full_messages).to include('Scheduled delivery Select')
       end
       it '価格が空だと投稿できない' do
