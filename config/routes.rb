@@ -5,8 +5,6 @@ Rails.application.routes.draw do
   get 'addresses/index'
   get 'addresses/new'
   get 'users/index'
-  get 'items/new'
-  post 'items/new'
   resources :addresses
   resources :items, only: [:index, :new, :create]
 end

@@ -9,6 +9,6 @@ function stop(){
     item2.textContent = tax
     const tax2 = `${price * 0.9}`
     item3.textContent = tax2
-  })
- }
+    })
+  }
 window.addEventListener("load", stop);
