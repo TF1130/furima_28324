@@ -9,8 +9,8 @@ class ItemsController < ApplicationController
     @item = Item.new
   end
 
-  def edit
-    @item = Item.find(1)
+  def show
+    @item = Item.find(params[:id])
   end
 
   def create
@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    redirect_to 'users/sign_up' unless user_signed_in?
+    redirect_to new_user_registration_path unless user_signed_in?
   end
 
   private
