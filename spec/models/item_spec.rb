@@ -8,8 +8,8 @@ describe Item do
     context '新規投稿がうまくいくとき' do
       it '画像、商品名、商品の説明、カテゴリー、配送料、発送元、発送までの日数、価格が存在すれば投稿できる' do
         @item = Item.new(image: 'url', title: 'aaa', text: 'aaaaa',
-                          category_id: 'カテゴリ', item_status_id: '美品', delivery_fee_id: '元払い', prefecture_id: 'ハワイ',
-                          shipdate_standard_id: '30日', price: '1000')
+                         category_id: 'カテゴリ', item_status_id: '美品', delivery_fee_id: '元払い', prefecture_id: 'ハワイ',
+                         shipdate_standard_id: '30日', price: '1000')
         expect(@item).to be_valid
       end
 
@@ -63,7 +63,7 @@ describe Item do
       it '価格が空だと投稿できない' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price can't be blank", "Price is invalid")
+        expect(@item.errors.full_messages).to include("Price can't be blank", 'Price is invalid')
       end
       it '価格設定が範囲内でなければ投稿できない' do
         @item.price = '210'
