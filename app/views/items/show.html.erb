@@ -7,11 +7,11 @@
         <%= @item.title %>
       </h2>
       <div class='item-img-content'>
-           <%= image_tag @item.image, class: "item-box-img" if @item.image.attached?%>
+        <%= image_tag @item.image, class: "item-box-img" if @item.image.attached? %>
          <% if @item.user_id.present? %>
-         <div class='sold-out'>
+          <div class='sold-out'>
            <span>Sold Out!!</span>
-         </div>
+          </div>
          <% end %>
       </div>
       <div class="item-price-box">
@@ -59,7 +59,6 @@
           </tr>
         </tbody>
       </table>
-    <%# <% end %> %>
     <div class="option">
       <div class="favorite-btn">
         <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
