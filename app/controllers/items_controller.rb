@@ -13,6 +13,10 @@ class ItemsController < ApplicationController
     @item = Item.find(1)
   end
 
+  def show
+    @item = Item.all
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -20,6 +24,9 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
   end
 
   def move_to_index
