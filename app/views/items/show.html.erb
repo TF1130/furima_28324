@@ -3,13 +3,12 @@
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
-    <% @item.each do |item| %>
       <h2 class="name">
-        <%= item.title %>
+        <%= @item.title %>
       </h2>
       <div class='item-img-content'>
-           <%= image_tag item.image, class: "item-box-img" if item.image.attached?%>
-         <% if item.user_id.present? %>
+           <%= image_tag @item.image, class: "item-box-img" if @item.image.attached?%>
+         <% if @item.user_id.present? %>
          <div class='sold-out'>
            <span>Sold Out!!</span>
          </div>
@@ -17,13 +16,12 @@
       </div>
       <div class="item-price-box">
         <span class="item-price">
-          ¥<%= item.price %>
+          ¥<%= @item.price %>
         </span>
         <span class="item-postage">
           (税込) 送料込み
         </span>
       </div>
-    <% end  %>
     <% if user_signed_in? %>
      <%= link_to '商品の編集', edit_item_path, method: :get, class: "item-red-btn" %>
      <p class='or-text'>or</p>
