@@ -23,7 +23,7 @@ class ItemsController < ApplicationController
     if item.update(item_params)
       redirect_to item_path
     else
-      redirect_to item_path
+      render :edit
     end
   end
 
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
 
   def current_only_user
     @item = Item.find_by(id: params[:id])
-    if @item.user_id != @current_user.id
+    if @item.user_id != current_user.id
       redirect_to root_path
     end
   end
