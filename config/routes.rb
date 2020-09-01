@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   get 'addresses/new'
   get 'users/index'
   resources :addresses
-  resources :items, only: [:index, :new, :create, :show, :edit, :destroy]
+  resources :items, only: [:index, :new, :create, :show, :edit, :update]
 end
