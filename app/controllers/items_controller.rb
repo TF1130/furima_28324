@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   # 非ログイン時に新規投稿商品にアクセスすると、サインアップ画面に遷移するように設定する
   before_action :move_to_index, except: [:index, :show]
-  before_action :set_item, only: [:edit, :show]
+  before_action :set_item, only: [:edit, :show, :destroy]
 
   def index
     @items = Item.all
@@ -10,7 +10,11 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
   end
-
+  def destroy
+    if @item.destroy
+      redirect_to root_path
+    end
+  end
   def update
     item = Item.find(params[:id])
     if item.update(item_params)
