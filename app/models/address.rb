@@ -13,7 +13,26 @@ class Address < ApplicationRecord
     validates :prefecture_id
     validates :shipdate_standard_id
     validates :price
-  end
 
-  belongs_to :item_purchase
+    validates :postcode
+    validates :prefecture_id#被り| prefecture_id | integer    | null: false                   |
+    validates :city
+    validates :block
+    validates :phone_number
+    validates :item_purchase #| item_purchase | references | null: false, foreign_key:true |
+  end
+    validates :building
+
+          ## addressテーブル
+        #| Column        | Type       | Option                        |
+        #| ------------- | ---------- | ----------------------------- |
+        #| postcode      | string     | null: false                   |
+        #| prefecture_id | integer    | null: false                   |
+        #| city          | string     | null: false                   |
+        #| block         | string     | null: false                   |
+        #| building      | string     |                               |
+        #| phone_number  | string     | null: false                   |
+        #| item_purchase | references | null: false, foreign_key:true |
+
+  belongs_to :order
 end
