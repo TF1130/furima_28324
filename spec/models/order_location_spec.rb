@@ -34,6 +34,16 @@ RSpec.describe OrderLocation, type: :model do
       @order_location.valid?
       expect(@order_location.errors.full_messages).to include("Block can't be blank")
     end
+    it 'tokenが空だと保存できないこと' do
+      @order_location.token = nil
+      @order_location.valid?
+      expect(@order_location.errors.full_messages).to include("Token can't be blank")
+    end
+    it '電話番号にハイフンがある場合保存できない' do
+      @order_location.phone_number = include "1-1"
+      @order_location.valid?
+      expect(@order_location.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)", "Phone number is invalid")
+    end
     it 'buildingは空でも保存できること' do
       @order_location.building = ''
       expect(@order_location).to be_valid
