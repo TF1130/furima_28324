@@ -73,28 +73,20 @@ ActiveRecord::Schema.define(version: 2020_09_02_055649) do
     t.string "building"
     t.string "phone_number", null: false
     t.bigint "order_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_locations_on_order_id"
+    t.index ["user_id"], name: "index_locations_on_user_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "item_id"
-    t.integer "price", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["item_id"], name: "index_orders_on_item_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
-  end
-
-  create_table "transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "item_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["item_id"], name: "index_transactions_on_item_id"
-    t.index ["user_id"], name: "index_transactions_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -120,8 +112,7 @@ ActiveRecord::Schema.define(version: 2020_09_02_055649) do
   add_foreign_key "item_purchases", "items"
   add_foreign_key "item_purchases", "users"
   add_foreign_key "locations", "orders"
+  add_foreign_key "locations", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
-  add_foreign_key "transactions", "items"
-  add_foreign_key "transactions", "users"
 end
