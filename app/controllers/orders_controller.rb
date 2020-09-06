@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order_location).permit(:price,:postcode,
       :prefecture_id, :city, :block, :phone_number,
-      :building, :order_id).merge(token: params[:token],item_id: params[:item_id], user_id: current_user.id )
+      :building, :order_id).merge(token: params[:token],item_id: params[:item_id], user_id: current_user.id)
   end
 
   def set_item
@@ -52,6 +52,8 @@ class OrdersController < ApplicationController
   end
 
   def move_to_item_orders
+    @item = Item.find_by(id: params[:item_id])
+    @user = User.find_by(id: params[:user_id])
     unless user_signed_in? && current_user
       redirect_to root_path
     end
