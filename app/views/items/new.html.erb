@@ -21,7 +21,7 @@
         </p>
         <%= f.file_field :image, id:"item-image" %>
           <% if @item.image.attached? %> 
-          <%= image_tag @item.image %>  
+          <%= image_tag @item.image.variant(resize:'500x500') %>  
           <% end %> 
       </div>
     </div>
