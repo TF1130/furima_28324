@@ -28,6 +28,8 @@ class ItemsController < ApplicationController
     end
   end
 
+  def show
+  end
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -53,3 +55,5 @@ class ItemsController < ApplicationController
     @item = Item.find_by(id: params[:id])
   end
 end
+
+
