@@ -19,5 +19,5 @@ class Address < ApplicationRecord
     validates :block
     validates :phone_number
   end
-    validates :building
+  validates :building
 end

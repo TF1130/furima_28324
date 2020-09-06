@@ -17,12 +17,12 @@ RSpec.describe OrderLocation, type: :model do
     it 'postcodeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
       @order_location.postcode = 'aaa'
       @order_location.valid?
-      expect(@order_location.errors.full_messages).to include("Postcode is invalid")
+      expect(@order_location.errors.full_messages).to include('Postcode is invalid')
     end
     it 'prefecture_idを選択していないと保存できないこと' do
       @order_location.prefecture_id = 0
       @order_location.valid?
-      expect(@order_location.errors.full_messages).to include("Prefecture must be other than 0")
+      expect(@order_location.errors.full_messages).to include('Prefecture must be other than 0')
     end
     it 'cityが空だと保存できないこと' do
       @order_location.city = nil
@@ -40,9 +40,9 @@ RSpec.describe OrderLocation, type: :model do
       expect(@order_location.errors.full_messages).to include("Token can't be blank")
     end
     it '電話番号にハイフンがある場合保存できない' do
-      @order_location.phone_number = include "1-1"
+      @order_location.phone_number = include '1-1'
       @order_location.valid?
-      expect(@order_location.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)", "Phone number is invalid")
+      expect(@order_location.errors.full_messages).to include('Phone number is too long (maximum is 11 characters)', 'Phone number is invalid')
     end
     it 'buildingは空でも保存できること' do
       @order_location.building = ''
