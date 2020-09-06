@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'addresses/index'
   get 'addresses/new'
   get 'users/index'
+  resources :item_purchases
   resources :addresses
-  resources :items
+  resources :items do
+    resources :orders
+  end
 end

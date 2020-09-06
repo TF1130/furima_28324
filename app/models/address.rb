@@ -2,7 +2,7 @@ class Address < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
   belongs_to :item, optional: true
-
+  belongs_to :order
   with_options presence: true do
     validates :title
     validates :text
@@ -13,7 +13,11 @@ class Address < ApplicationRecord
     validates :prefecture_id
     validates :shipdate_standard_id
     validates :price
+    validates :postcode
+    validates :prefecture_id
+    validates :city
+    validates :block
+    validates :phone_number
   end
-
-  belongs_to :item_purchase
+    validates :building
 end

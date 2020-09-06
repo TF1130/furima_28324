@@ -18,23 +18,23 @@
 
 - has_many :items
 - has_many :comments
-- has_many :item_purchases
+- has_many :orders
 
 ## items テーブル
 
-| Column            | Type   | Option                         |
-| ----------------- | ------ | ------------------------------ |
-| title             | string | null: false                    |
-| image             | url    | null: false                    |
-| price             | string | null: false                    |
-| text              | text   | null: false                    |
-| user_id           | string | null: false, foreign_key: true |
+| Column  | Type    | Option                         |
+| ------- | ------- | ------------------------------ |
+| title   | string  | null: false                    |
+| image   | url     | null: false                    |
+| price   | integer | null: false                    |
+| text    | text    | null: false                    |
+| user_id | string  | null: false, foreign_key: true |
 
 ### Association
 
 - belongs_to :user
-- has_one :item_purchase
-- has_many :comments
+- has_one    :order
+- has_many   :comments
 
 
 ## comments テーブル
@@ -50,7 +50,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## item_purchases テーブル
+## orders テーブル
 
 | Column | Type       | Option                         |
 | ------ | ---------- | ------------------------------ |
@@ -61,9 +61,9 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_one :address
+- has_one    :location
 
-## addressテーブル
+## locationテーブル
 
 | Column        | Type       | Option                        |
 | ------------- | ---------- | ----------------------------- |
@@ -73,8 +73,8 @@
 | block         | string     | null: false                   |
 | building      | string     |                               |
 | phone_number  | string     | null: false                   |
-| item_purchase | references | null: false, foreign_key:true |
+| order         | references | null: false, foreign_key:true |
 
 ### Association
 
-- belongs_to :item_purchase
+- belongs_to :order

@@ -41,15 +41,15 @@ class ItemsController < ApplicationController
     redirect_to new_user_registration_path unless user_signed_in?
   end
 
-  def set_item
-    @item = Item.find_by(id: params[:id])
-  end
-
   private
 
   def item_params
     params.require(:item).permit(:content, :image, :text, :title,
                                  :address_id, :user_id, :category_id, :item_status_id, :delivery_fee_id,
                                  :prefecture_id, :shipdate_standard_id, :price).merge(user_id: current_user.id)
+  end
+
+  def set_item
+    @item = Item.find_by(id: params[:id])
   end
 end
