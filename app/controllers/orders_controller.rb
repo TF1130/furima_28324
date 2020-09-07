@@ -2,7 +2,7 @@
 class OrdersController < ApplicationController
   before_action :move_to_item_orders, only: [:index]
   before_action :set_item, only: [:index, :create, :new]
-  before_action :done, only: [:index]
+  # before_action :done, only: [:index]
   #出品者はURLを直接入力して購入ページに遷移しようとすると、トップページに遷移すること
   def index
     @item = Item.find_by(id: params[:item_id])
@@ -48,7 +48,6 @@ class OrdersController < ApplicationController
       card: params[:token],    # カードトークン
       currency:'jpy'                 # 通貨の種類(日本円)
     )
-    order_id.create(item_id: params[:id])
   end
   def user
     @user = User.find_by(id: params[:user_id])
@@ -62,13 +61,14 @@ class OrdersController < ApplicationController
     end
   end
 
-  def done
-    if @order_location = Item.find_by(id: params[:item_id])
-      redirect_to root_path
-    else
-      render 'index'
-    end
-  end
+  # def done
+  #   @item = Item.find_by(id: params[:id])
+  #   if @order_location != nil
+  #     redirect_to root_path
+  #   else
+  #     render 'index'
+  #   end
+  # end
 
   def soldoutview
     @order_location = Item.find_by(id: params[:id])
