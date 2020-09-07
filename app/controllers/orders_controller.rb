@@ -1,5 +1,5 @@
-
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
   before_action :move_to_item_orders, only: [:index]
   before_action :set_item, only: [:index, :create, :new]
   # before_action :done, only: [:index]
@@ -54,13 +54,13 @@ class OrdersController < ApplicationController
   end
 
   def move_to_item_orders
+    stock = Order.find_by(id: params[:item_id])
     @item = Item.find_by(id: params[:item_id])
     @user = User.find_by(id: params[:user_id])
-    unless user_signed_in? && current_user
+    if @current_user == @item.user_id && stock == nil
       redirect_to root_path
     end
   end
-
   # def done
   #   @item = Item.find_by(id: params[:id])
   #   if @order_location != nil
