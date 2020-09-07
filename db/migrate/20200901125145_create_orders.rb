@@ -3,6 +3,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
     create_table :orders do |t|
       t.references :user, foreign_key: true
       t.references :item, foreign_key: true
+      t.string
       t.timestamps
     end
   end

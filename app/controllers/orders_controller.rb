@@ -48,6 +48,7 @@ class OrdersController < ApplicationController
       card: params[:token],    # カードトークン
       currency:'jpy'                 # 通貨の種類(日本円)
     )
+    order_id.create(item_id: params[:id])
   end
   def user
     @user = User.find_by(id: params[:user_id])
@@ -67,5 +68,10 @@ class OrdersController < ApplicationController
     else
       render 'index'
     end
+  end
+
+  def soldoutview
+    @order_location = Item.find_by(id: params[:id])
+    @order_location.update(item_id: current_user.id)
   end
 end

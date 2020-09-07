@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   # 非ログイン時に新規投稿商品にアクセスすると、サインアップ画面に遷移するように設定する
   before_action :move_to_index, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :destroy]
-
+  # before_action :itemhasuser, only: [:show]
   def index
     @items = Item.all
   end
@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:content, :image, :text, :title,
+    params.require(:item).permit(:content, :image, :text, :title, :itemsold,
                                  :address_id, :user_id, :category_id, :item_status_id, :delivery_fee_id,
                                  :prefecture_id, :shipdate_standard_id, :price).merge(user_id: current_user.id)
   end
@@ -54,6 +54,24 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find_by(id: params[:id])
   end
+
+  # def itemhasuser
+  #   @item = Item.find_by(id: params[:id])
+  #   if @order_location = Item.find_by(id: params[:item_id])
+  #     @order_location.update(itemsold: current_user.id)
+  #     redirect_to root_path
+  #   else
+  #     render 'index'
+  #   end
+  # end
+
+  # def itembuyuser
+  #   @order_location = Item.find_by(id: params[:id]
+  # end
+
+  # def sold
+  #   itembuyuser = 
+  # end
 end
 
 
