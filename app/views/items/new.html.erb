@@ -22,6 +22,7 @@
           <% if @item.image.attached? %> 
           <%= image_tag @item.image.variant(resize:'500x500') %>  
           <% end %> 
+          <div id="image-list"></div>
       </div>
     </div>
     <%# /出品画像 %>
